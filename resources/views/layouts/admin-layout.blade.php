@@ -347,21 +347,31 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <li>
-                        <a class="waves-effect waves-dark" href="index.html" aria-expanded="false">
-                            <i class="mdi mdi-gauge"></i>
+                        <a class="waves-effect waves-dark" href="dashboard" aria-expanded="false">
+                            <i class="icon-home"></i>
                             <span class="hide-menu">Dashboard </span>
                         </a>
                     </li>
                     <li>
-                        <a class="waves-effect waves-dark" href="index.html" aria-expanded="false">
-                            <i class="mdi mdi-gauge"></i>
-                            <span class="hide-menu">Dashboard </span>
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                            <i class="icon-notebook"></i>
+                            <span class="hide-menu">Posts</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="all_posts">All posts</a></li>
+                            <li><a href="add_post">Add post</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark" href="messages" aria-expanded="false">
+                            <i class="icon-speech"></i>
+                            <span class="hide-menu">Messages</span>
                         </a>
                     </li>
                     <li>
-                        <a class="waves-effect waves-dark" href="index.html" aria-expanded="false">
-                            <i class="mdi mdi-gauge"></i>
-                            <span class="hide-menu">Dashboard </span>
+                        <a class="waves-effect waves-dark" href="settings" aria-expanded="false">
+                            <i class="icon-settings"></i>
+                            <span class="hide-menu">Settings</span>
                         </a>
                     </li>
                 </ul>
@@ -391,14 +401,14 @@
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="row page-titles">
-                <div class="col-md-5 col-8 align-self-center">
+                <div style="display: none;" class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor">Dashboard</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
-                <div class="col-md-7 col-4 align-self-center">
+                <div style="display: none;" class="col-md-7 col-4 align-self-center">
                     <div class="d-flex m-t-10 justify-content-end">
                         <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                             <div class="chart-text m-r-10">
@@ -429,13 +439,12 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
 
+
             @yield('content')
 
 
-
-
             <!-- ============================================================== -->
-            <!-- End PAge Content -->
+            <!-- End Page Content -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Right sidebar -->

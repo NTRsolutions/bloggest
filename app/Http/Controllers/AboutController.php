@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Settings;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -15,8 +16,10 @@ class AboutController extends Controller
     public function index()
     {
         $data = About::all()->first();
+        $settings = Settings::all()->first();
+        $social_links = json_decode($settings->social_links);
 
-        return view('front.about')->with(compact('data'));
+        return view('front.about')->with(compact('data', 'settings', 'social_links'));
     }
 
     /**
