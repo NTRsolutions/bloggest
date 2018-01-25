@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Settings;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        $settings = Settings::all()->first();
+        $social_links = json_decode($settings->social_links);
+
+        View::share('social_links', $social_links);
+        View::share('settings', $settings);
     }
 
     /**

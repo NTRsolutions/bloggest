@@ -24,6 +24,7 @@
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{{ asset('admin/css/colors/blue.css') }}" id="theme" rel="stylesheet">
+    @yield('styles')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -557,6 +558,7 @@
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="{{ asset('admin/assets/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
+@yield('scripts')
 </body>
 
 </html>

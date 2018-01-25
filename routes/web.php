@@ -27,12 +27,11 @@ Route::namespace('admin')->prefix('admin')->group(function (){
     Route::get('/dashboard', function (){
         return view('admin.dashboard');
     });
-    Route::get('/all_posts', function (){
-        return view('admin.all_posts');
-    });
+    Route::get('/all_posts', 'PostsController@index');
     Route::get('/add_post', function (){
         return view('admin.add_post');
     });
+    Route::post('/add_post', 'PostsController@store');
     Route::get('/messages', function (){
         return view('admin.messages');
     });

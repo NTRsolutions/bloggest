@@ -22,10 +22,16 @@
 
     <!-- Post Content -->
     <article>
+        <style>
+            img{
+                max-width: 100%;
+                align-content: center;
+            }
+        </style>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    {{ $post->content }}
+                    {!!html_entity_decode($post->content)!!}
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Posts;
-use App\Settings;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
@@ -19,11 +19,11 @@ class PostsController extends Controller
         $posts = Posts::orderBy('id', 'desc')->get();
 
         foreach ($posts as $post){
-           $user = User::where('id', $post->user_id)->first()->name;
-           $post->user_name = $user;
+            $user = User::where('id', $post->user_id)->first()->name;
+            $post->user_name = $user;
         }
 
-        return view('front.home')->with(compact('posts'));
+        return view('admin.all_posts')->with(compact('posts'));
     }
 
     /**
@@ -44,7 +44,27 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        if (!empty($request->title && $request->description && $request->content)) {
+//            $title       = $request->title;
+//            $description = $request->description;
+//            $content     = $request->content;
+//        }
+
+        $this->validate(request(),[
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        $post= new Posts();
+        $post->title= $request['title'];
+        $post->description = $request['description'];
+        $post->content = $request['content'];
+        $post->user_id = 1;
+        // add other fields
+        $post->save();
+
+        return redirect('admin/add_post');
     }
 
     /**
@@ -55,9 +75,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Posts::where("id", $id)->first();
-
-        return view("front.post")->with(compact('post'));
+        //
     }
 
     /**
