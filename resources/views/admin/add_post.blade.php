@@ -14,7 +14,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Post Title</label>
-                                        <input type="text" name="title" class="form-control">
+                                        <input type="text" name="title" class="form-control" >
                                     </div>
                                 </div>
                             </div>
@@ -22,7 +22,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <input type="text" name="description" class="form-control">
+                                        <input type="text" name="description" class="form-control" >
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <label>Image</label>
                                         <label class="custom-file d-block">
-                                            <input type="file" id="file" class="custom-file-input">
+                                            <input type="file" name="image" class="custom-file-input" required>
                                             <span class="custom-file-control"></span>
                                         </label>
                                     </div>
@@ -41,7 +41,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Content</label>
-                                        <textarea name="content" class="textarea_editor form-control" rows="20" placeholder="Enter text ..."></textarea>
+                                        <textarea name="content" class="textarea_editor form-control" rows="20" placeholder="Enter text ..." ></textarea>
                                     </div>
                                 </div>
                             </div>

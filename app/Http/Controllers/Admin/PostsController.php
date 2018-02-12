@@ -6,6 +6,7 @@ use App\Posts;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -44,11 +45,6 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-//        if (!empty($request->title && $request->description && $request->content)) {
-//            $title       = $request->title;
-//            $description = $request->description;
-//            $content     = $request->content;
-//        }
 
         $this->validate(request(),[
             'title' => 'required|max:255',
@@ -61,7 +57,7 @@ class PostsController extends Controller
         $post->description = $request['description'];
         $post->content = $request['content'];
         $post->user_id = 1;
-        // add other fields
+        $post->image = $imageName;
         $post->save();
 
         return redirect('admin/add_post');
