@@ -5,7 +5,8 @@
         <div class="col-lg-12">
             <div class="card card-outline-info">
                 <div class="card-body">
-                    <form method="POST">
+                        {!! Form::open(array('route' => 'posts.store','enctype' => 'multipart/form-data')) !!}
+
                         {{ csrf_field() }}
                         <div class="form-body">
                             <h3 class="box-title">Add Post</h3>
@@ -31,7 +32,8 @@
                                     <div class="form-group">
                                         <label>Image</label>
                                         <label class="custom-file d-block">
-                                            <input type="file" name="image" class="custom-file-input" required>
+                                            {!! Form::file('image', array('class' => 'custom-file-input', 'required')) !!}
+
                                             <span class="custom-file-control"></span>
                                         </label>
                                     </div>
@@ -49,7 +51,7 @@
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

@@ -24,9 +24,7 @@ Auth::routes();
 //Route::get('/contact', 'ContactController@index');
 
 Route::namespace('admin')->prefix('admin')->group(function (){
-    Route::resources([
-        'post' => 'PostsController',
-    ]);
+    Route::resource('posts', 'PostsController');
     Route::get('/dashboard', function (){
         return view('admin.dashboard');
     });

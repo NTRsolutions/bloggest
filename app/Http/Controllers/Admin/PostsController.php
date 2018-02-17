@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -24,7 +25,7 @@ class PostsController extends Controller
             $post->user_name = $user;
         }
 
-        return view('admin.all_posts')->with(compact('posts'));
+        return view('admin.post.index')->with(compact('posts'));
     }
 
     /**
@@ -34,7 +35,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.post.create');
     }
 
     /**
@@ -52,15 +53,28 @@ class PostsController extends Controller
             'content' => 'required',
         ]);
 
+        // File Upload
+        $time = Carbon::now();
+        // Requesting the file from the form
+        $image = $request->file('image');
+        // Getting the extension of the file
+        $extension = $image->getClientOriginalExtension();
+        // Creating the directory, for example, if the date = 18/10/2017, the directory will be 2017/10/
+        $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
+        // Creating the file name: random string followed by the day, random number and the hour
+        $filename = str_random(5).date_format($time,'d').rand(1,9).date_format($time,'h').".".$extension;
+        // This is our upload main function, storing the image in the storage that named 'public'
+        $upload_success = $image->storeAs($directory, $filename, 'public');
+
         $post = new Posts();
         $post->title = $request['title'];
         $post->description = $request['description'];
         $post->content = $request['content'];
         $post->user_id = 1;
-        $post->image = $imageName;
+        $post->image = $filename;
         $post->save();
 
-        return redirect('admin/add_post');
+        return redirect('admin.post.create');
     }
 
     /**

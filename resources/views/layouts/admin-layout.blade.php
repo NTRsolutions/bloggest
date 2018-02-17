@@ -67,7 +67,9 @@
                          <!-- dark Logo text -->
                          <img src="{{ asset('admin/assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                         <img src="{{ asset('admin/assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="{{ asset('admin/assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
+                    </span>
+                </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
@@ -359,8 +361,8 @@
                             <span class="hide-menu">Posts</span>
                         </a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="all_posts">All posts</a></li>
-                            <li><a href="add_post">Add post</a></li>
+                            <li><a href="{{ route('posts.index') }}">All posts</a></li>
+                            <li><a href="{{ route('posts.create') }}">New post</a></li>
                         </ul>
                     </li>
                     <li>
