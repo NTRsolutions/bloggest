@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Messages;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -34,7 +35,16 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $message = new Messages();
+        $message->name = $request['name'];
+        $message->email = $request['email'];
+        $message->phone = $request['phone'];
+        $message->message = $request['message'];
+        $message->save();
+
+        return redirect('contact')->with('success', 'Your message was sent succesfully');
+
     }
 
     /**

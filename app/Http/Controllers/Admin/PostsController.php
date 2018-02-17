@@ -52,8 +52,8 @@ class PostsController extends Controller
             'content' => 'required',
         ]);
 
-        $post= new Posts();
-        $post->title= $request['title'];
+        $post = new Posts();
+        $post->title = $request['title'];
         $post->description = $request['description'];
         $post->content = $request['content'];
         $post->user_id = 1;
